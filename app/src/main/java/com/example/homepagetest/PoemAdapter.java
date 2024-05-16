@@ -10,15 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.PoemViewHolder> {
     private List<Poem> poems;
+    private List<Poem> filteredPoems;
     private Context context;
 
     public PoemAdapter(List<Poem> poems, Context context) {
         this.poems = poems;
         this.context = context;
+        this.filteredPoems = new ArrayList<>(poems);
     }
 
     @NonNull
@@ -30,7 +33,7 @@ public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.PoemViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PoemViewHolder holder, int position) {
-        final Poem poem = poems.get(position);
+        final Poem poem = filteredPoems.get(position);
         holder.titleTextView.setText(poem.getTitle());
         holder.authorTextView.setText(poem.getAuthor());
 
@@ -44,9 +47,25 @@ public class PoemAdapter extends RecyclerView.Adapter<PoemAdapter.PoemViewHolder
         });
     }
 
+    public void updatePoems(List<Poem> poems) {
+        this.poems = poems;
+        this.filteredPoems = new ArrayList<>(poems);
+        notifyDataSetChanged();
+    }
+
+    public void filter(String query) {
+        filteredPoems.clear();
+        for (Poem poem : poems) {
+            if (poem.getTitle().contains(query) || poem.getAuthor().contains(query)) {
+                filteredPoems.add(poem);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
-        return poems.size();
+        return filteredPoems.size();
     }
 
     public static class PoemViewHolder extends RecyclerView.ViewHolder {
