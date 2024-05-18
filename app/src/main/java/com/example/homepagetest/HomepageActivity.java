@@ -47,21 +47,10 @@ public class HomepageActivity extends AppCompatActivity {
 
         loadRandomPoems();
 
-        // Add search view
-        searchView = findViewById(R.id.search_poem_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Implement search functionality
-                poemAdapter.filter(query);
-                return true;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
+
+
+
 
         // Add refresh button
         refreshButton = findViewById(R.id.refresh_button);

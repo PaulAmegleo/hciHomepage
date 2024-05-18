@@ -5,6 +5,19 @@
     android:layout_height="match_parent"
     tools:context=".PoemDetails">
 
+    <!-- Background ImageView -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/stick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <!-- Title TextView -->
     <TextView
         android:id="@+id/title_text_view"
         android:layout_width="wrap_content"
@@ -12,8 +25,10 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"/>
 
+    <!-- Author TextView -->
     <TextView
         android:id="@+id/author_text_view"
         android:layout_width="wrap_content"
@@ -22,8 +37,10 @@
         android:fontFamily="monospace"
         android:layout_below="@id/title_text_view"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"/>
 
+    <!-- ScrollView containing poem lines -->
     <ScrollView
         android:id="@+id/lines_scroll_view"
         android:layout_width="match_parent"
@@ -42,12 +59,12 @@
                 android:id="@+id/lines_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp" />
-
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
-
     </ScrollView>
 
+    <!-- Buttons layout -->
     <LinearLayout
         android:id="@+id/buttons_layout"
         android:layout_width="match_parent"
@@ -59,35 +76,34 @@
 
         <Button
             android:id="@+id/minus_button"
-            android:layout_width="62dp"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
             android:text="-"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button"/>
 
         <Button
             android:id="@+id/read_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:text="Read"
-            android:textSize="20sp" />
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Stop"
+            android:textSize="20sp"
+            android:background="@drawable/button"/>
 
         <Button
             android:id="@+id/stop_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Stop"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:textSize="20sp" />
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Read"
+            android:textSize="20sp"
+            android:background="@drawable/button"/>
 
         <Button
             android:id="@+id/plus_button"
-            android:layout_width="53dp"
-            android:layout_height="wrap_content"
+            android:layout_width="75dp"
+            android:layout_height="40dp"
             android:text="+"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:background="@drawable/button"/>
     </LinearLayout>
-
 </RelativeLayout>
